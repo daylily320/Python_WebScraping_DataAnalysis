@@ -1,14 +1,32 @@
-# Database 생성
+# Database 생성 (root password maria)
 mysql -u root –p
+#데이터베이스 목록 확인
 show databases;
+# mysql DB를 사용
 use mysql;
+#python_db DB를 생성
 create database python_db;
+#생성 후 목록 확인
+show databases;
+#user는 python, password는 python 계정 생성
 create user 'python'@'%' identified by 'python';
+#python 계정에게 python_db 권한 부여
 grant all privileges on python_db.* to 'python'@'%';
+#권한 부여를 DB에 즉시 적용하기
 flush privileges;
+#유저 생성 확인
 select user, host from user;
 exit;
 
 mysql -u python -p
+#권한 확인
 show grants for current_user;
+#python_db DB를 사용
 use python_db;
+#table 목록 확인
+show tables;
+#sons 테이블 구조 확인
+desc sons;
+
+select 곡명 from songs;
+select 곡명,장르 from songs where 가수 = '방탄소년단';
